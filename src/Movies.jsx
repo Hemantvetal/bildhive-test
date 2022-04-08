@@ -11,9 +11,10 @@ const ant_white_space = {
 function Movies() {
 
     const [movieList, setMovies] = useState([]/* moviesData.movies.results */);
+    const [key, setKey] = useState(process.env.REACT_APP_API_KEY);
 
     const getMovies = () => {
-      return fetch('https://api.themoviedb.org/3/movie/top_rated?api_key=89380a90a8a4c6dd3fc290ae4accd2e4')
+      return fetch(`https://api.themoviedb.org/3/movie/top_rated?api_key=${key}`)
         .then(data => data.json())
     }
 

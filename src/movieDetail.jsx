@@ -1,7 +1,7 @@
 import React, { Component,useEffect,useState } from 'react';
 import { Image ,Col,Card, Row} from 'antd';
 import { useNavigate ,useParams} from 'react-router-dom';
-
+// require('dotenv').config()
 
 const img_url = 'http://image.tmdb.org/t/p/';
 const img_size = 'w342'
@@ -9,10 +9,10 @@ const img_size = 'w342'
 function MovieDetail() {
 
     const [movie, setMovie] = useState({});
+    const [key, setKey] = useState(process.env.REACT_APP_API_KEY);
     const {movie_id} = useParams();
-
     const getMovie = () => {
-      return fetch(`https://api.themoviedb.org/3/movie/${movie_id}?api_key=89380a90a8a4c6dd3fc290ae4accd2e4`)
+      return fetch(`https://api.themoviedb.org/3/movie/${movie_id}?api_key=${key}`)
         .then(data => data.json())
     }
 
